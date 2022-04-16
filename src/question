@@ -1,0 +1,77 @@
+一進入的頁面
+首頁按鈕，router-link 沒有反應
+
+--
+成功加入產品 alert
+單一頁面內 猜你喜歡 swiper
+首頁 新品上市 swiper 自動輪播 修改
+wow.js V
+navbar 購物車標示數量 V
+navbar 調整
+單一產品圖 切換多圖預覽
+產品列表 特價加上 sale
+購物車列表 rwd 修改（參考 ringring）
+toast
+登入後台頁面（ui）
+其他 loading
+訂單重新整理頁面刷新保留資料（localstorage）
+研究文章和圖片上傳
+照片顏色調整？
+進度條 https://bootstrap5.hexschool.com/docs/5.1/utilities/position/
+手機版面確認 
+有時間再把 cartPage 的折扣金額帶到 orderPage
+-order 帶入 pagination (訂單查詢？)
+sweetalert：https://github.com/anteriovieira/vue-swal?ref=madewithvuejs.com
+rwd 選單 收合、位置
+
+--
+篩選 V
+
+單一產品頁面
+    -加入購物車 V
+    -購物車須知
+
+
+購物車列表
+    -切版 V
+    -取得購物車列表 V
+    -修改 V
+    -刪除 V
+    -套用優惠券 V
+    -訂購表單驗證 V
+    -清除全部購物車 V
+訂單頁面
+    -帶出資料 V
+    -結帳 V
+navbar 的購物車
+文案 V
+footer
+首頁切版
+登入後台頁面（ui）
+後來發現的問題待處理
+    -navbar 的 rwd
+    -手機 rwd 測試
+    -ProductPage split \n 換行 V
+    -篩選功能 V
+    -產品列表進入單一產品 router-link V
+    -收藏愛心拿掉 V
+    -表單驗證加星號 V
+    -跳轉到訂單的 router-link 網址要帶上 :id 的東西 V
+    -order 帶出照片 （要用其他方式傳？）V
+    -cart的付款拿掉 V
+    -測試優惠券帶到 order 頁面 V
+    
+
+    (看情況處理)
+    -methods 加註解
+    -檢查註解、有的可刪
+    -商品表格靠右 (暫時不處理)
+    -確認 loading 是不是都有帶上
+    
+
+--
+發問
+1. swiper 按加入購物車，反而是切換圖片？ 無法自動播放
+
+--
+自己待處理
