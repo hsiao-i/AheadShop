@@ -19,6 +19,6 @@ git commit -m 'deploy'
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
-git push -f git@github.com:hsiao-i/vue3_week8.git master:gh-pages
+git push -f git@github.com:hsiao-i/AheadShop.git master:gh-pages
 
 cd -

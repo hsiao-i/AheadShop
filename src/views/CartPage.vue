@@ -45,23 +45,23 @@
         >
       </div>
       <div class="px-4" v-else>
-        <table class="w-100 mt-4" ref="table">
+        <table class="w-100 mt-4 table" ref="table">
           <thead class="thead">
             <tr class="text-center">
               <th scope="col" class="py-3">商品資訊</th>
-              <th scope="col">單件價格</th>
-
-              <!-- <th scope="col">小計</th> -->
+              <th scope="col" class="py-3">單件價格 / 數量</th>
+              <th scope="col" class="py-3">小計</th>
+              <!-- <th scope="col">數量</th> -->
               <th scope="col"></th>
             </tr>
           </thead>
-          <tbody class="border-bottom">
+          <tbody class="border-bottom align-items-center">
             <tr
               class="text-center"
               v-for="cart in cartData.carts"
               :key="cart.id"
             >
-              <td class="p-3">
+              <td class="p-3" data-title="商品資訊">
                 <div class="d-md-flex d-block align-items-center">
                   <img
                     :src="cart.product.imageUrl"
@@ -71,7 +71,7 @@
                   <h6 class="mt-2 text-center">{{ cart.product.title }}</h6>
                 </div>
               </td>
-              <td>
+              <td class="text-start">
                 <p v-if="cart.product.price === cart.product.origin_price">
                   NT$ {{ cart.product.price }}
                 </p>
@@ -81,25 +81,31 @@
                     >NT$ {{ cart.product.origin_price }}</del
                   >
                 </p>
-
-                <select
-                  name="qty"
-                  id="qty"
-                  class="form-select w-75"
-                  v-model="cart.qty"
-                  @change="changeCart(cart)"
-                >
-                  <option
-                    :value="num"
-                    v-for="num in 20"
-                    :key="`${cart.id} + ${num}`"
-                  >
-                    {{ num }}
-                  </option>
-                </select>
+                <div class="d-flex justify-content-start align-items-center">
+                  <div class="me-1">
+                    <label for="qty">數量</label>
+                  </div>
+                  <div>
+                    <select
+                      name="qty"
+                      id="qty"
+                      class="form-select"
+                      v-model="cart.qty"
+                      @change="changeCart(cart)"
+                    >
+                      <option
+                        :value="num"
+                        v-for="num in 20"
+                        :key="`${cart.id} + ${num}`"
+                      >
+                        {{ num }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
               </td>
 
-              <!-- <td>NT$ {{ `${cart.product.price * cart.qty}` }}</td> -->
+              <td>NT$ {{ `${cart.product.price * cart.qty}` }}</td>
               <td>
                 <a href="#" @click.prevent="deleteCart(cart.id)"
                   ><i class="bi bi-trash text-secondary fs-6"></i
@@ -111,7 +117,7 @@
 
         <!-- 優惠券與結帳金額 -->
         <div class="row">
-          <div class="col-6 mt-4">
+          <div class="col-12 col-md-6 mt-4">
             <button
               type="button"
               class="btn btn-outline-danger"
@@ -120,7 +126,7 @@
               清空購物車
             </button>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <div class="mt-4">
               <div class="d-flex">
                 <input
@@ -325,12 +331,17 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.cartData = res.data.data
           this.isLoading = false
         })
         .catch((err) => {
-          alert(err.response)
+          this.$swal.fire({
+            icon: 'warning',
+            text: err.response.message,
+            showConfirmButton: false,
+            timer: 1800
+          })
           this.isLoading = false
         })
     },
@@ -417,7 +428,7 @@ export default {
       this.$http
         .delete(url)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.$swal.fire({
             icon: 'success',
             text: '已清空購物車～',
@@ -427,7 +438,13 @@ export default {
           this.getCart()
         })
         .catch((err) => {
-          alert(err.response)
+          this.$swal.fire({
+            icon: 'warning',
+            text: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1800
+          })
+          this.isLoading = false
         })
     },
     // 送出訂單
@@ -454,7 +471,7 @@ export default {
         })
         .catch((err) => {
           this.$swal.fire({
-            icon: 'error',
+            icon: 'warning',
             text: err.response.data.message,
             showConfirmButton: false,
             timer: 1800
@@ -470,7 +487,6 @@ export default {
   },
   mounted() {
     this.getCart()
-    // console.log(this.cartData.carts.product_id)
   }
 }
 </script>
@@ -510,5 +526,18 @@ export default {
 
 .thead {
   border-bottom: 2px solid #e9e8e8;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 </style>

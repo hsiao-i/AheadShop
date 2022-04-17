@@ -7,12 +7,14 @@
         Ahead accessories <br />
       </h2>
       <div class="text-center">
-        <button
-          type="button"
-          class="sub-title text-white lh-lg fs-6 btn btn-primary shadow-sm w-25"
-        >
-          一起建立生活儀式感 ❋
-        </button>
+        <router-link to="/products">
+          <button
+            type="button"
+            class="sub-title text-white lh-lg fs-6 btn btn-primary shadow-sm w-25"
+          >
+            一起建立生活儀式感 ❋
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -154,7 +156,7 @@
     <div class="row g-0">
       <div class="col-12 col-sm-6 col-md-3">
         <!-- <router-link to="/products?category=手鍊" class="d-block"> -->
-        <a href="#" @click.prevent="toCategory('手鍊')">
+        <router-link to="/product/-MzZVrK6FsFCJC5E3NmY" class="d-block">
           <div class="category-block position-relative">
             <img
               src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
@@ -167,14 +169,11 @@
               手鍊
             </p>
           </div>
-        </a>
+        </router-link>
         <!-- </router-link> -->
       </div>
       <div class="col-12 col-sm-6 col-md-3">
-        <router-link
-          :to="{ name: 'products', query: { category: '戒指' } }"
-          class="d-block"
-        >
+        <router-link to="/product/-MzefMxogbXCbC5ZOsRG" class="d-block">
           <div class="category-block position-relative">
             <img
               src="https://images.unsplash.com/photo-1611652032946-2e1a02fb34da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80"
@@ -190,7 +189,7 @@
         </router-link>
       </div>
       <div class="col-12 col-sm-6 col-md-3">
-        <router-link to="/products?category=耳環" class="d-block">
+        <router-link to="/product/-MzeVFhMSyvjq-6h1388" class="d-block">
           <div class="category-block position-relative">
             <img
               src="https://images.unsplash.com/photo-1590820229450-4212a4bac17e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
@@ -206,7 +205,7 @@
         </router-link>
       </div>
       <div class="col-12 col-sm-6 col-md-3">
-        <router-link to="/products?category=項鍊" class="d-block">
+        <router-link to="/product/-MzZFkkVuUzGGHQGdRz9" class="d-block">
           <div class="category-block position-relative">
             <img
               src="https://images.unsplash.com/photo-1611085582956-da557acbc3a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
@@ -232,7 +231,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-import emitter from '@/libs/emitter'
+// import emitter from '@/libs/emitter'
 
 export default {
   components: {
@@ -271,21 +270,23 @@ export default {
         .get(url)
         .then((res) => {
           this.products = res.data.products
-          console.log(this.products)
+          // console.log(this.products)
           this.isLoading = false
         })
         .catch((err) => {
-          alert(err.data)
+          this.$swal.fire({
+            icon: 'warning',
+            text: err.response.message,
+            showConfirmButton: false,
+            timer: 1800
+          })
           this.isLoading = false
         })
     },
     // 切換產品類別
     toCategory(category) {
-      if (category) {
-        this.$router.push({ name: 'products', query: { category } })
-        emitter.emit('category', category)
-      }
-      console.log(this.$route.query)
+      this.$router.push({ name: 'products', query: { category } })
+      // emitter.emit('category', category)
     }
   },
 
@@ -376,7 +377,7 @@ export default {
   }
 }
 
-//animo
+//animo 按鈕
 
 .animoButtonOverlay {
   display: inline-block;
@@ -385,6 +386,10 @@ export default {
   color: #fff;
   cursor: pointer;
 }
+.animoButtonOverlay:hover {
+  color: #f0e9e9;
+}
+
 .animoButtonOverlay::before {
   content: '';
   position: absolute;
@@ -392,7 +397,7 @@ export default {
   width: 100%;
   top: 5px;
   right: 5px;
-  background-color: #c18787;
+  background-color: #e3bbbb;
   border-radius: 10px;
   z-index: -1;
   transition: transform 0.2s ease-in-out;

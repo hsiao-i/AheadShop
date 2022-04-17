@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid">
     <div
-      class="d-md-flex d-block pt-5 ps-5 border-top border-secondary align-items-center"
+      class="d-md-flex d-block pt-4 ps-5 border-top border-secondary align-items-center"
     >
-      <h2 class="fs-4 me-5 logo lh-sm fs-4">
+      <h2 class="fs-4 me-5 logo lh-sm fs-4 word-break">
         Ahead <br />
         accessories
       </h2>
@@ -25,5 +25,12 @@
         </ul>
       </div>
     </div>
+  </div>
+  <hr />
+  <div>
+    <p class="text-center fs-7">
+      本網站僅供個人作品使用，非商業用途 <br />
+      Copyright © 2022 Ahead. All rights reserved.
+    </p>
   </div>
 </template>

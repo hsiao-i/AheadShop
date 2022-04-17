@@ -22,7 +22,10 @@ toast
 有時間再把 cartPage 的折扣金額帶到 orderPage
 -order 帶入 pagination (訂單查詢？)
 sweetalert：https://github.com/anteriovieira/vue-swal?ref=madewithvuejs.com
+
+--
 rwd 選單 收合、位置
+首頁圖放連結
 
 --
 篩選 V

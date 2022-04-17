@@ -4,6 +4,7 @@
   >
     <div class="container-xl">
       <!-- <div class="d-flex justify-content-between"> -->
+
       <router-link
         to="/"
         class="navbar-brand text-center me-5 logo fs-4 lh-sm text-danger"
@@ -11,7 +12,7 @@
         >Ahead <br />
         accessories</router-link
       >
-      <div class="text-end">
+      <div class="">
         <button
           class="navbar-toggler"
           type="button"
@@ -24,6 +25,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
+
       <!-- </div> -->
       <!-- navbar-collapse collapse-->
       <div class="collapse navbar-collapse" id="navbarNav">

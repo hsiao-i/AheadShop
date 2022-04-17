@@ -1,7 +1,7 @@
 <template>
   <LoadingOverlay :active="isLoading" :z-indes="1000"></LoadingOverlay>
   <div class="container mt-5">
-    <div class="row row-sm">
+    <div class="row row-sm justify-content-center">
       <div class="col-sm-3">
         <h5 class="h5">產品類別 Category ❉</h5>
         <ul
@@ -10,14 +10,14 @@
           <li class="mb-3">
             <a
               class="text-decoration-none pointer d-block"
-              @click="getProducts('')"
+              @click="getCategory('')"
               ><span>全部商品</span></a
             >
           </li>
           <li class="mb-3">
             <a
               class="text-decoration-none pointer d-block"
-              @click="getProducts('項鍊')"
+              @click="getCategory('項鍊')"
               >項鍊</a
             >
           </li>
@@ -25,7 +25,7 @@
             <a
               to
               class="text-decoration-none pointer d-block"
-              @click="getProducts('戒指')"
+              @click="getCategory('戒指')"
               >戒指</a
             >
           </li>
@@ -33,7 +33,7 @@
             <a
               to
               class="text-decoration-none pointer d-block"
-              @click="getProducts('耳環')"
+              @click="getCategory('耳環')"
               >耳環</a
             >
           </li>
@@ -41,7 +41,7 @@
             <a
               to
               class="text-decoration-none pointer d-block"
-              @click="getProducts('手鍊')"
+              @click="getCategory('手鍊')"
               >手鍊</a
             >
           </li>
@@ -104,14 +104,17 @@
             </div>
           </div>
         </div>
-        <PaginationCom
-          :pages="pagination"
-          @change-page="getProducts('')"
-          class="mt-5 justify-content-center"
-        ></PaginationCom>
+
         <!-- <router-view></router-view> -->
         <span v-if="favorite.includes(products.id)"></span>
       </div>
+    </div>
+    <div class="w-25 mx-auto">
+      <PaginationCom
+        :pages="pagination"
+        @change-page="getProducts"
+        class="mt-5"
+      ></PaginationCom>
     </div>
   </div>
 </template>
@@ -138,18 +141,15 @@ export default {
   },
 
   methods: {
-    getProducts(category, page = 1) {
+    getProducts(page = 1) {
       this.isLoading = true
-      // this.currentPage = page
-      let url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products?page=${page}`
+      this.currentPage = page
+      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products?page=${page}`
 
-      if (category) {
-        url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products?category=${category}&page=${page}`
-      }
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res, this.pagination)
+          // console.log(res, this.pagination)
           // console.log(this.products)
           this.products = res.data.products
           this.pagination = res.data.pagination
@@ -157,13 +157,23 @@ export default {
         })
         .catch((err) => {
           this.$swal.fire({
-            icon: 'error',
+            icon: 'warning',
             text: err.response.message,
             showConfirmButton: false,
             timer: 1800
           })
           this.isLoading = false
         })
+    },
+    getCategory(category, page = 1) {
+      const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products?category=${category}&page=${page}`
+
+      this.$http.get(url).then((res) => {
+        // console.log(this.products)
+        this.products = res.data.products
+        this.pagination = res.data.pagination
+        this.isLoading = false
+      })
     },
     // 加到購物車
     addToCart(id, qty = 1) {
@@ -226,10 +236,6 @@ export default {
     }
   },
   mounted() {
-    emitter.on('category', (category) => {
-      this.getProducts(category)
-      console.log(category)
-    })
     this.getProducts()
   }
 }

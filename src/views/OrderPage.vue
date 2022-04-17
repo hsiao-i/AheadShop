@@ -114,21 +114,6 @@
           </h5>
           <!-- 訂單詳細資料 -->
           <div class="px-5 py-4 text-center">
-            <!-- <div class="row"> -->
-            <!-- <div class="col-4">
-                <ul class="list-unstyled text-start">
-                  <li class="mb-3">訂單金額</li>
-                  <li class="mb-3">訂單編號</li>
-                  <li class="mb-3">訂購時間</li>
-                  <li class="mb-3">收件人姓名</li>
-                  <li class="mb-3">Email</li>
-                  <li class="mb-3">聯絡電話</li>
-                  <li class="mb-3">收件地址</li>
-                  <li class="mb-3">留言</li>
-                  <li class="mb-3">付款方式</li>
-                </ul>
-              </div> -->
-
             <div class="col-12">
               <VForm ref="form" v-slot="{ errors }" @submit="checkPay">
                 <ul class="list-unstyled text-start">
@@ -241,7 +226,7 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.order = res.data.order
 
           console.log(this.order)
@@ -249,7 +234,12 @@ export default {
           console.log(this.$route.params)
         })
         .catch((err) => {
-          alert(err.response)
+          this.$swal.fire({
+            icon: 'warning',
+            text: err.response.message,
+            showConfirmButton: false,
+            timer: 1800
+          })
           this.isLoading = false
         })
     },

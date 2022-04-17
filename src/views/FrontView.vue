@@ -2,6 +2,7 @@
   <FrontNavbar></FrontNavbar>
 
   <router-view></router-view>
+
   <FrontFooter class="mt-5"></FrontFooter>
 </template>
 

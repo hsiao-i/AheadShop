@@ -141,7 +141,6 @@ export default {
           // console.log(content)
         })
         .catch((err) => {
-          // console.log(err.response.data.message)
           this.$swal.fire({
             icon: 'info',
             text: err.response.data.message,
@@ -173,7 +172,6 @@ export default {
           this.getProduct()
         })
         .catch((err) => {
-          // console.log(err)
           this.$swal.fire({
             icon: 'error',
             text: err.response.data.message,
@@ -186,7 +184,9 @@ export default {
 
   watch: {
     $route() {
-      this.getProduct()
+      if (this.$route.name === 'product') {
+        this.getProduct()
+      }
     }
   },
   mounted() {
