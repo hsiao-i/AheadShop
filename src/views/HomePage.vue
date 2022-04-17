@@ -19,7 +19,7 @@
     </div>
   </div>
   <!-- 拱門區塊 -->
-  <div class="container mt-200">
+  <div class="container mt-200" id="home">
     <div>
       <div class="d-block d-sm-flex justify-content-between">
         <div>
@@ -343,7 +343,7 @@ export default {
 
   .img-home-2 {
     height: 500px;
-    margin-left: 15%;
+    // margin-left: 15%;
   }
 }
 
@@ -354,7 +354,7 @@ export default {
 
   .img-home-2 {
     height: 420px;
-    margin-left: 20%;
+    // margin-left: 20%;
   }
 }
 

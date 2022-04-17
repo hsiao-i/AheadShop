@@ -43,6 +43,11 @@ configure({
 })
 setLocale('zh_TW') // 因為語系檔沒辦法直接啟用，因此會強制預設語系為中文
 
+// 每次刷新回到頁面頂端
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
+})
+
 const app = createApp(App)
 
 app.config.globalProperties.$filters = {

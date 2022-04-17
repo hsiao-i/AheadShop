@@ -87,16 +87,6 @@
           >購物車</i
         ></router-link> -->
       </div>
-
-      <!-- <button type="button" class="btn btn-primary me-5">
-        結帳
-        <span
-          class="position-absolute top-0 start-80 me-5 pt-5translate-middle badge rounded-pill bg-danger"
-        >
-          {{ cartData.carts.length }}
-          <span class="visually-hidden">unread messages</span>
-        </span>
-      </button> -->
     </div>
   </nav>
 </template>
@@ -129,7 +119,7 @@ export default {
     // 取得收藏
     getFavorite() {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
-      console.log(this.favorite)
+      // console.log(this.favorite)
     }
   },
   mounted() {

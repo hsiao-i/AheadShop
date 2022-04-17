@@ -19,11 +19,6 @@
         <SwiperProduct :swiper-product="product"></SwiperProduct>
       </div>
 
-      <!-- <div
-        class="col-md-5 product-img rounded-3"
-        :style="{ backgroundImage: `url(${product.imageUrl})` }"
-      ></div> -->
-
       <div class="col-md-6">
         <div class="h-100">
           <h3 class="product-title mb-3">{{ product.title }}</h3>
@@ -191,7 +186,6 @@ export default {
   },
   mounted() {
     this.getProduct()
-    // this.splitText()
   }
 }
 </script>

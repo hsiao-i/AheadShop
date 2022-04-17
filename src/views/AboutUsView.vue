@@ -53,6 +53,17 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    window.onunload = unload
+    function unload(e) {
+      window.scrollTo(0, 0)
+    }
+  }
+}
+</script>
+
 <style scoped>
 .about-img {
   width: 50%;

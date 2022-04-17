@@ -216,20 +216,20 @@
 
           <div class="mb-3">
             <label for="phone" class="form-label"
-              >聯絡電話<span class="text-danger fs-5-5 ms-1">*</span></label
+              >手機號碼<span class="text-danger fs-5-5 ms-1">*</span></label
             >
             <VField
               id="phone"
-              name="聯絡電話"
+              name="手機號碼"
               type="tel"
               class="form-control"
-              :class="{ 'is-invalid': errors['聯絡電話'] }"
-              placeholder="請輸入聯絡電話"
-              rules="required|min:8|max:10"
+              :class="{ 'is-invalid': errors['手機號碼'] }"
+              placeholder="請輸入手機號碼"
+              :rules="isPhone"
               v-model="form.user.tel"
             ></VField>
             <ErrorMessage
-              name="聯絡電話"
+              name="手機號碼"
               class="invalid-feedback"
             ></ErrorMessage>
           </div>
@@ -302,6 +302,7 @@
 </template>
 
 <script>
+import emitter from '@/libs/emitter'
 export default {
   emits: ['emit-order'],
   data() {
@@ -409,6 +410,7 @@ export default {
             timer: 1800
           })
           this.getCart()
+          emitter.emit('get-cart')
           this.isLoading = false
         })
         .catch((err) => {
@@ -436,11 +438,12 @@ export default {
             timer: 1800
           })
           this.getCart()
+          emitter.emit('get-cart')
         })
         .catch((err) => {
           this.$swal.fire({
             icon: 'warning',
-            text: err.response.data.message,
+            text: err.response.message,
             showConfirmButton: false,
             timer: 1800
           })
@@ -459,7 +462,7 @@ export default {
           // console.log(res)
           this.$swal.fire({
             icon: 'success',
-            text: '成功送出訂單 ✿',
+            text: '成功送出資料 ✿',
             showConfirmButton: false,
             timer: 1800
           })
@@ -471,13 +474,21 @@ export default {
         })
         .catch((err) => {
           this.$swal.fire({
-            icon: 'warning',
+            icon: 'error',
             text: err.response.data.message,
             showConfirmButton: false,
             timer: 1800
           })
           this.isLoading = false
         })
+    },
+    // 表單驗證_手機號碼
+    isPhone(value) {
+      if (!value) {
+        return '手機號碼 為必填'
+      }
+      const phoneNumber = /^(09)[0-9]{8}$/
+      return phoneNumber.test(value) ? true : '需要正確的手機號碼'
     }
   },
   watch: {
