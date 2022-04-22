@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="table-cus mt-5">
+    <div class="table-cus mt-5 mb-5">
       <h5
         class="h5 bg-danger bg-gradient rounded-top p-3 text-white"
         style="--bs-bg-opacity: 0.5"
@@ -76,8 +76,6 @@
                   <i class="bi bi-cart3 fs-5-5 rounded-circle"></i> 加入購物車
                 </button>
               </td>
-
-              <!-- <td>NT$ {{ `${cart.product.price * cart.qty}` }}</td> -->
             </tr>
           </tbody>
         </table>
@@ -109,7 +107,6 @@ export default {
     getFavorite() {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
       emitter.emit('add-favorite')
-      console.log(this.favorite)
     },
     // 取得產品列表
     getProducts() {
@@ -119,7 +116,6 @@ export default {
         .get(url)
         .then((res) => {
           this.products = res.data.products
-          console.log(res)
           this.getFavorite()
         })
         .catch((err) => {
@@ -175,7 +171,7 @@ export default {
 <style scoped>
 .cart-img {
   height: 150px;
-  width: 40%;
+  width: 50%;
   object-fit: cover;
 }
 

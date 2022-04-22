@@ -3,7 +3,7 @@
   <div class="container">
     <LoadingOverlay :active="isLoading" :z-index="1000"></LoadingOverlay>
     <div class="text-end mt-4">
-      <button class="btn btn-primary" @click="openModal('new')">
+      <button class="btn btn-primary" @click="openModal('new')" type="button">
         建立新的產品
       </button>
     </div>
@@ -100,7 +100,6 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`
         )
         .then((res) => {
-          // console.log(res)
           // 產品列表
           this.products = res.data.products
           // 分頁
@@ -108,10 +107,8 @@ export default {
           this.isLoading = false
         })
         .catch((err) => {
-          // this.$httpMessageState(err.response, '錯誤訊息')
           alert('新增產品失敗')
           alert(err.response.message)
-
           this.isLoading = false
         })
     },
@@ -147,14 +144,12 @@ export default {
           const productComponent = this.$refs.productModal
           alert(`${situation}`)
           productComponent.closeModal()
-          // this.$$httpMessageState(res, situation)
           this.isLoading = false
           this.getProducts()
         })
         .catch((err) => {
-          alert(err.response.message)
+          alert(err.response.data.message)
           this.isLoading = false
-          // this.$$httpMessageState(err.response)
         })
     },
     openDelModal(item) {
@@ -169,7 +164,6 @@ export default {
           `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
         )
         .then((res) => {
-          console.log(res)
           alert('刪除品項成功')
           this.isLoading = false
           const delProductComponent = this.$refs.delModal
@@ -177,7 +171,7 @@ export default {
           this.getProducts()
         })
         .catch((err) => {
-          alert(err.response.message)
+          alert(err.response.data.message)
           this.isLoading = false
         })
     }
@@ -185,7 +179,6 @@ export default {
 
   mounted() {
     this.getProducts()
-    console.log(this.tempProduct)
   }
 }
 </script>

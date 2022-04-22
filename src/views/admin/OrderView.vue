@@ -90,7 +90,6 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res)
           this.orders = res.data.orders
           this.isLoading = false
         })
@@ -113,16 +112,14 @@ export default {
       this.$http
         .put(url, { data: paid })
         .then((res) => {
-          // console.log(res)
           alert(res.data.message)
           this.getOrders()
           this.isLoading = false
           const orderComponent = this.$refs.orderModal
           orderComponent.closeModal()
-          // this.$messageState(res, '更新付款狀態')
         })
         .catch((err) => {
-          alert(err.response.message)
+          alert(err.response.data.message)
           this.isLoading = false
         })
     }

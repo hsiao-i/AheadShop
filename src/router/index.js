@@ -68,6 +68,10 @@ const routes = [
         component: () => import('../views/admin/OrderView.vue')
       }
     ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/'
   }
 ]
 

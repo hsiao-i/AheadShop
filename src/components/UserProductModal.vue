@@ -52,7 +52,6 @@
 
 <script>
 import Modal from 'bootstrap/js/dist/modal'
-// import { Modal } from 'bootstrap'
 export default {
   props: {
     product: {
@@ -64,7 +63,7 @@ export default {
   },
   data() {
     return {
-        status: {},
+      status: {},
       modal: '',
       qty: 1
     }
@@ -73,12 +72,12 @@ export default {
     this.modal = new Modal(this.$ref.modal)
   },
   methods: {
-      openModal() {
-          this.modal.show();
-      },
-      hideModal() {
-          this.modal.hide();
-      }
+    openModal() {
+      this.modal.show()
+    },
+    hideModal() {
+      this.modal.hide()
+    }
   }
 }
 </script>

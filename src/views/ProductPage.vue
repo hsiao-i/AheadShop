@@ -22,7 +22,7 @@
       <div class="col-md-6">
         <div class="h-100">
           <h3 class="product-title mb-3">{{ product.title }}</h3>
-          <p class="lh-lg ps-3 fs-7 changeLine">
+          <p class="lh-lg fs-7 changeLine">
             {{ product.description }}
           </p>
           <p v-if="product.price === product.origin_price" class="fs-5-5">
@@ -35,15 +35,17 @@
             >
           </p>
 
-          <div class="d-flex justify-content-end align-items-center">
+          <div
+            class="mt-5 mb-3 d-flex justify-content-between align-items-center"
+          >
             <label class="form-label me-2">數量</label>
-            <select name="qty" id="qty" class="form-select w-25">
+            <select name="qty" id="qty" class="form-select w-100">
               <option value="1" v-for="num in 20" :key="num + 'selected'">
                 {{ num }}
               </option>
             </select>
           </div>
-          <div class="mt-5 d-flex justify-content-between">
+          <div class="d-flex justify-content-between">
             <div class="w-50 me-2">
               <button
                 type="button"
@@ -104,6 +106,7 @@
 
 <script>
 import SwiperProduct from '@/components/SwiperProduct.vue'
+import emitter from '@/libs/emitter'
 
 export default {
   components: {
@@ -123,26 +126,21 @@ export default {
       this.isLoading = true
       const id = this.$route.params.id
       const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/product/${id}`
-      this.$http
-        .get(url)
-        .then((res) => {
-          // console.log(res)
-          // console.log(this.$route.params.id)
-          this.product = res.data.product
-          this.isLoading = false
+      this.$http.get(url).then((res) => {
+        this.product = res.data.product
+        this.isLoading = false
 
-          const content = res.data.product.content
-          content.split('\n')
-          // console.log(content)
-        })
-        .catch((err) => {
-          this.$swal.fire({
-            icon: 'info',
-            text: err.response.data.message,
-            showConfirmButton: false,
-            timer: 1800
-          })
-        })
+        const content = res.data.product.content
+        content.split('\n')
+      })
+      // .catch((err) => {
+      //   this.$swal.fire({
+      //     icon: 'info',
+      //     text: err.response.data.message,
+      //     showConfirmButton: false,
+      //     timer: 1800
+      //   })
+      // })
     },
     addToCart(id, qty = 1) {
       this.isLoading = true
@@ -156,7 +154,7 @@ export default {
         .post(url, { data: data })
         .then((res) => {
           this.product = res.data
-          // console.log(res)
+          emitter.emit('get-cart')
           this.$swal.fire({
             icon: 'success',
             text: '成功加入購物車 ✿',
@@ -191,6 +189,9 @@ export default {
 </script>
 
 <style scoped>
+label {
+  white-space: nowrap;
+}
 .product-img {
   height: 400px;
   background-image: url('https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80');

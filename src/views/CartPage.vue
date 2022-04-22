@@ -2,31 +2,36 @@
   <LoadingOverlay :active="isLoading" :z-indes="1000"></LoadingOverlay>
   <div class="container">
     <div>
-      <div class="d-flex justify-content-around w-50 mx-auto my-5">
+      <div class="d-flex justify-content-between j mx-auto my-5 top-block">
         <div>
-          <div class="rounded-pill text-center order-shape mx-auto mb-1">
-            <p class="pt-2">1</p>
+          <div class="rounded-pill order-shape mb-1 position-relative mx-auto">
+            <p class="position-absolute start-50 top-50 translate-middle">1</p>
           </div>
           <p class="text-center fs-7">填寫資料</p>
         </div>
 
         <div>
-          <div class="rounded-pill text-center order-shape-light mx-auto mb-1">
-            <p class="pt-2">2</p>
+          <div
+            class="rounded-pill text-center order-shape-light mx-auto mb-1 position-relative"
+          >
+            <p class="position-absolute start-50 top-50 translate-middle">2</p>
           </div>
           <p class="text-center fs-7">確認訂單</p>
         </div>
 
         <div>
-          <div class="rounded-pill text-center order-shape-light mx-auto mb-1">
-            <p class="pt-2">3</p>
+          <div
+            class="rounded-pill text-center order-shape-light mx-auto mb-1 position-relative"
+          >
+            <p class="position-absolute start-50 top-50 translate-middle">3</p>
           </div>
           <p class="text-center fs-7">購買完成</p>
         </div>
       </div>
     </div>
     <!-- 購物車內容 -->
-    <div class="table-cus">
+
+    <div class="table-cus col-12 col-md-10 mx-auto">
       <h5
         class="h5 bg-danger bg-gradient rounded-top p-3 text-white"
         style="--bs-bg-opacity: 0.5"
@@ -129,16 +134,26 @@
           <div class="col-12 col-md-6">
             <div class="mt-4">
               <div class="d-flex">
-                <input
-                  type="text"
-                  class="form-control w-75 rounded-0 rounded-start border-end-0"
-                  placeholder="請輸入優惠碼"
-                  v-model="coupon"
-                />
+                <VForm ref="form" v-slot="{ errors }" class="w-100">
+                  <VField
+                    id="coupon"
+                    name="優惠碼"
+                    type="text"
+                    class="form-control rounded-0 rounded-start border-end-0"
+                    :class="{ 'is-invalid': errors['優惠碼'] }"
+                    placeholder="請輸入優惠碼"
+                    rules="alpha_num"
+                    v-model="coupon"
+                  ></VField>
+                  <ErrorMessage
+                    name="優惠碼"
+                    class="invalid-feedback"
+                  ></ErrorMessage>
+                </VForm>
 
                 <button
                   type="button"
-                  class="btn btn-outline-danger w-25"
+                  class="btn btn-outline-danger text-button"
                   @click="useCoupon"
                 >
                   使用優惠券
@@ -169,8 +184,10 @@
         </div>
       </div>
     </div>
+
     <!-- 填寫資訊 -->
-    <div class="table-cus my-5">
+
+    <div class="table-cus my-5 col-12 col-md-10 mx-auto">
       <h5
         class="h5 bg-danger bg-gradient rounded-top p-3 text-white"
         style="--bs-bg-opacity: 0.5"
@@ -253,28 +270,7 @@
               class="invalid-feedback"
             ></ErrorMessage>
           </div>
-          <!-- <div class="mb-3">
-            <label for="pay" class="form-label">付款方式<span class="text-danger fs-5-5 ms-1">*</span></label>
-            <VField
-              id="pay"
-              name="付款方式"
-              as="select"
-              class="form-select"
-              :class="{ 'is-invalid': errors['付款方式'] }"
-              placeholder="請選擇付款方式"
-              rules="required"
-              v-model="pay"
-            >
-              <option value="default" selected disabled>請選擇付款方式</option>
-              <option value="ATM">ATM 轉帳</option>
-              <option value="visa">信用卡</option>
-              <option value="visa">超商付款</option>
-            </VField>
-            <ErrorMessage
-              name="付款方式"
-              class="invalid-feedback"
-            ></ErrorMessage>
-          </div> -->
+
           <div class="mb-3">
             <label for="message" class="form-label">留言</label>
             <textarea
@@ -332,7 +328,6 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // console.log(res)
           this.cartData = res.data.data
           this.isLoading = false
         })
@@ -354,7 +349,6 @@ export default {
       }
 
       this.$http.post(url, { data: data }).then((res) => {
-        // console.log(res)
         this.$swal.fire({
           icon: 'success',
           text: res.data.message,
@@ -375,7 +369,6 @@ export default {
       this.$http
         .put(url, { data: data })
         .then((res) => {
-          // console.log(res)
           this.$swal.fire({
             icon: 'success',
             text: res.data.message,
@@ -402,7 +395,6 @@ export default {
       this.$http
         .delete(url)
         .then((res) => {
-          // console.log(res)
           this.$swal.fire({
             icon: 'success',
             text: res.data.message,
@@ -430,13 +422,28 @@ export default {
       this.$http
         .delete(url)
         .then((res) => {
-          // console.log(res)
-          this.$swal.fire({
-            icon: 'success',
-            text: '已清空購物車～',
-            showConfirmButton: false,
-            timer: 1800
-          })
+          this.$swal
+            .fire({
+              // icon: 'success',
+              // text: '已清空購物車～',
+              // showConfirmButton: false,
+              // timer: 1800
+              text: '是否確認清空購物車？',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#E3CACA',
+              cancelButtonColor: '#C18787',
+              confirmButtonText: '清空購物車'
+            })
+            .then((result) => {
+              if (result.isConfirmed) {
+                this.$swal.fire({
+                  text: '確認清空購物車～',
+                  icon: 'success',
+                  confirmButtonColor: '#C18787'
+                })
+              }
+            })
           this.getCart()
           emitter.emit('get-cart')
         })
@@ -459,7 +466,6 @@ export default {
       this.$http
         .post(url, { data: orderInfo })
         .then((res) => {
-          // console.log(res)
           this.$swal.fire({
             icon: 'success',
             text: '成功送出資料 ✿',
@@ -494,6 +500,8 @@ export default {
   watch: {
     $route() {
       this.getCart()
+
+      console.log(this.$route.name)
     }
   },
   mounted() {
@@ -516,6 +524,14 @@ export default {
   width: 45px;
   height: 45px;
 }
+.top-block {
+  width: 50%;
+}
+@media (max-width: 576px) {
+  .top-block {
+    width: 100%;
+  }
+}
 
 .cart-img {
   height: 150px;
@@ -526,6 +542,13 @@ export default {
 @media (max-width: 768px) {
   .cart-img {
     width: 90%;
+    margin-right: 0px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-img {
+    width: 100%;
     margin-right: 0px !important;
   }
 }
@@ -550,5 +573,13 @@ export default {
     overflow-x: auto;
     white-space: nowrap;
   }
+}
+
+.text-button {
+  white-space: nowrap;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 100px #fff8f8 inset;
 }
 </style>

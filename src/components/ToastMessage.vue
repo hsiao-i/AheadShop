@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="toast-container"
-    class="position-fixed top-0 end-0"
-    style="z-index: 1500"
-  >
+  <div class="toast-container position-fixed top-0 end-0" style="z-index: 1500">
     <div
       class="toast"
       role="alert"

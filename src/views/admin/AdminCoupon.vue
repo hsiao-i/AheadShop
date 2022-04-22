@@ -93,12 +93,11 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res)
           this.coupons = res.data.coupons
           this.isLoading = false
         })
         .catch((err) => {
-          alert(err.response.message)
+          alert(err.response.data.message)
           this.isLoading = false
         })
     },
@@ -106,7 +105,6 @@ export default {
       this.isNew = isNew
       if (isNew) {
         this.tempCoupon = {
-          // due_data: Object.values(this.coupons.due_date)[0]
           due_date: new Date().getTime() / 1000
         }
       } else {
@@ -129,7 +127,6 @@ export default {
 
       this.$http[httpMethod](url, { data })
         .then((res) => {
-          console.log(res)
           alert(res.data.message)
           this.getCoupon()
           this.isLoading = false
@@ -137,7 +134,7 @@ export default {
           couponComponent.closeModal()
         })
         .catch((err) => {
-          alert(err.response.data)
+          alert(err.response.data.message)
           this.isLoading = false
         })
     },
@@ -160,7 +157,7 @@ export default {
           couponDelComponent.closeModal()
         })
         .catch((err) => {
-          alert(err.response.data)
+          alert(err.response.data.message)
           this.isLoading = false
         })
     }

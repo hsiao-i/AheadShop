@@ -53,6 +53,7 @@
               id="coupon_percent"
               placeholder="請輸入折扣百分比"
               min="0"
+              oninput="if(value>100)value-100;if(value.length>3)value=value.slice(0,3);if(value<0)value=0"
               v-model.number="tempCoupon.percent"
             />
           </div>
@@ -125,14 +126,9 @@ export default {
         .toISOString()
         .split('T')
       ;[this.due_date] = dateAndTime
-      console.log(this.due_date)
     },
     due_date() {
-      //   this.tempCoupon.due_date = Math.floor(
-      //     new Date(this.tempCoupon.due_date) / 1000
-      // this.tempCoupon.due_date = Object.values(this.due_date)[0]
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000)
-      console.log(this.tempCoupon.due_date)
     }
   }
 }

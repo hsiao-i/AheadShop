@@ -74,7 +74,6 @@ export default {
         this.$http
           .post(url)
           .then((res) => {
-            console.log(res)
             this.checkSuccess = true
           })
           .catch((err) => {

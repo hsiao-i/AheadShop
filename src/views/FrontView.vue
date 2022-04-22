@@ -1,9 +1,9 @@
 <template>
-  <FrontNavbar></FrontNavbar>
+  <FrontNavbar />
 
   <router-view></router-view>
 
-  <FrontFooter class="mt-5"></FrontFooter>
+  <FrontFooter></FrontFooter>
 </template>
 
 <script>
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Yeseva+One&display=swap');
 
 body {
   background-color: #fff8f8;
@@ -35,6 +35,10 @@ body {
 .logo {
   font-family: 'Marck Script', cursive;
   // font-family: 'Noto Sans TC', sans-serif;
+}
+
+.text-title {
+  font-family: 'Yeseva One', cursive;
 }
 
 .mb-100 {

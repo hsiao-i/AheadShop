@@ -248,20 +248,6 @@ export default {
         this.tempProduct.imagesUrl = []
       }
     }
-  },
-  mounted() {
-    console.log(this.tempProduct)
   }
-  // methods: {
-  //   openModal() {
-  //     this.modal.show()
-  //   },
-  //   closeModal() {
-  //     this.modal.hide()
-  //   }
-  // },
-  // mounted() {
-  //   this.modal = new Modal(this.$refs.productModal)
-  // }
 }
 </script>

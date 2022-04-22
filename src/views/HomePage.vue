@@ -7,41 +7,48 @@
         Ahead accessories <br />
       </h2>
       <div class="text-center">
-        <router-link to="/products">
-          <button
-            type="button"
-            class="sub-title text-white lh-lg fs-6 btn btn-primary shadow-sm w-25"
-          >
-            一起建立生活儀式感 ❋
-          </button>
-        </router-link>
+        <button
+          @click="goAnchor"
+          type="button"
+          class="text-white lh-lg fs-6 btn btn-primary shadow-sm col-4 col-sm-4 col-10"
+        >
+          一起建立生活儀式感 ❋
+        </button>
       </div>
     </div>
   </div>
   <!-- 拱門區塊 -->
-  <div class="container mt-200" id="home">
+  <div class="container mt-100" id="homeTurn">
+    <h3
+      class="h1 mb-100 text-center logo text-title sub-title wow animate__animated animate__slideInDown"
+    >
+      New Product
+    </h3>
+
     <div>
       <div class="d-block d-sm-flex justify-content-between">
         <div>
-          <img
-            src="https://images.pexels.com/photos/9947832/pexels-photo-9947832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            alt="ring"
-            class="img-home wow animate__animated animate__zoomIn"
-            data-wow-duration="1.5s"
-          />
-          <p
-            class="fs-5 ps-5 d-none d-md-block mt-200 wow animate__animated animate__zoomIn"
+          <router-link
+            to="/product/-MzeaXzkeYEnpNHf6vZC"
+            class="d-block text-center"
           >
+            <img
+              src="https://images.pexels.com/photos/9947832/pexels-photo-9947832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              alt="新品上市_綻放戒指"
+              class="img-home wow animate__animated animate__zoomIn"
+              data-wow-duration="1.5s"
+            />
+          </router-link>
+          <p class="fs-5-5 ps-5 mt-5 wow animate__animated animate__zoomIn">
             在繁忙的生活中 <br />
             妝點自己 <br />
-            小小的裝飾令生活更加質感
+            裝飾令生活更加質感
           </p>
         </div>
 
         <div>
           <div class="mt-5 ps-5 wow animate__animated animate__zoomIn">
-            <h4 class="h2 mb-3">Show Your Style</h4>
-            <p class="fs-5 d-md-block d-none">
+            <p class="fs-5-5">
               讓生活不再單調 <br />
               展現自我風格
             </p>
@@ -52,14 +59,15 @@
               >找尋自我風格 →
             </router-link>
           </div>
-
-          <img
-            src="https://images.pexels.com/photos/9947823/pexels-photo-9947823.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-            alt="ring"
-            class="img-home-2 text-center d-block wow animate__animated animate__zoomIn"
-            data-wow-delay="0.7s"
-            data-wow-duration="1.5s"
-          />
+          <router-link to="/product/-MzeaXzkeYEnpNHf6vZC">
+            <img
+              src="https://images.pexels.com/photos/9947823/pexels-photo-9947823.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+              alt="新品上市_綻放戒指"
+              class="img-home-2 text-center d-block wow animate__animated animate__zoomIn"
+              data-wow-delay="0.7s"
+              data-wow-duration="1.5s"
+            />
+          </router-link>
         </div>
       </div>
     </div>
@@ -70,43 +78,56 @@
     class="center mt-200 d-block d-sm-flex justify-content-center align-items-center text-center"
   >
     <div>
-      <img
-        class="center-img rounded-3 wow animate__animated animate__fadeInDown"
-        src="https://images.unsplash.com/photo-1590820210939-70bf6ad00ee0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=719&q=80"
-        alt="耳環"
-      />
+      <router-link to="/product/-N05Blu2j_DA6SfXZRKk">
+        <img
+          class="center-img rounded-3 wow animate__animated animate__fadeInDown"
+          src="https://images.unsplash.com/photo-1590820210939-70bf6ad00ee0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=719&q=80"
+          alt="耳環"
+        />
+      </router-link>
     </div>
     <div>
-      <img
-        class="center-img rounded-3 wow animate__animated animate__fadeInDown"
-        data-wow-delay="0.5s"
-        src="https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-        alt="耳環"
-      />
+      <router-link to="/product/-N05Blu2j_DA6SfXZRKk">
+        <img
+          class="center-img rounded-3 wow animate__animated animate__fadeInDown"
+          data-wow-delay="0.5s"
+          src="https://images.unsplash.com/photo-1590820204872-81fbd313de9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          alt="耳環"
+        />
+      </router-link>
     </div>
     <div>
-      <img
-        class="center-img rounded-3 wow animate__animated animate__fadeInDown"
-        data-wow-delay="1s"
-        src="https://images.unsplash.com/photo-1590820225605-fe14606ee40b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=716&q=80"
-        alt="耳環"
-      />
+      <router-link to="/product/-N05Blu2j_DA6SfXZRKk">
+        <img
+          class="center-img rounded-3 wow animate__animated animate__fadeInDown"
+          data-wow-delay="1s"
+          src="https://images.unsplash.com/photo-1590820225605-fe14606ee40b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=716&q=80"
+          alt="耳環"
+        />
+      </router-link>
     </div>
   </div>
 
   <!-- 單張 -->
   <div class="container mt-200">
     <div class="text-center position-relative base-block">
-      <img
-        src="https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-        alt="項鍊"
-        class="single-img rounded-3 wow animate__animated animate__zoomIn"
-      />
+      <router-link to="/products">
+        <img
+          src="https://images.unsplash.com/photo-1596942515068-0daf9cc4fcac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+          alt="項鍊"
+          class="single-img rounded-3 wow animate__animated animate__zoomIn"
+        />
+      </router-link>
     </div>
   </div>
 
   <!-- 新品上市 -->
-  <div class="mt-200 swiper-container">
+  <h3
+    class="h1 mb-100 text-center logo text-title sub-title wow animate__animated animate__slideInDown"
+  >
+    Product List
+  </h3>
+  <div class="mt-100 swiper-container">
     <swiper
       :modules="modules"
       :slides-per-view="1"
@@ -225,13 +246,13 @@
 </template>
 
 <script>
+import emitter from '@/libs/emitter'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
-// import emitter from '@/libs/emitter'
 
 export default {
   components: {
@@ -270,7 +291,6 @@ export default {
         .get(url)
         .then((res) => {
           this.products = res.data.products
-          // console.log(this.products)
           this.isLoading = false
         })
         .catch((err) => {
@@ -286,12 +306,15 @@ export default {
     // 切換產品類別
     toCategory(category) {
       this.$router.push({ name: 'products', query: { category } })
-      // emitter.emit('category', category)
+    },
+    goAnchor() {
+      document.querySelector('#homeTurn').scrollIntoView(true)
     }
   },
 
   mounted() {
     this.getProducts()
+    emitter.emit('add-favorite')
   }
 }
 </script>
@@ -321,16 +344,52 @@ export default {
   text-shadow: 2px 2px 3px rgb(169, 169, 169);
 }
 
+.sub-title {
+  font-size: 50px;
+  padding-top: 20%;
+  // text-shadow: 4px 4px 7px rgb(147, 146, 146);
+  color: rgb(163, 163, 163);
+  position: relative;
+  // word-break: break-all;
+  // border-bottom: 10px solid #fff;
+}
+
+.sub-title::after {
+  content: '';
+  width: 350px;
+  height: 35px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 38%;
+  top: 90%;
+  z-index: -1;
+  // box-shadow: 3px 3px 4px #e5d0d0;
+}
+
+@media (max-width: 768px) {
+  .sub-title::after {
+    width: 60%;
+    left: 28%;
+    top: 83%;
+  }
+}
+
+@media (max-width: 576px) {
+  .sub-title::after {
+    display: none;
+  }
+}
+
 .img-home {
   width: 95%;
-  height: 700px;
+  height: 600px;
   border-radius: 120px;
   object-fit: cover;
 }
 
 .img-home-2 {
   width: 95%;
-  height: 700px;
+  height: 600px;
   margin-top: 30%;
   border-radius: 200px 200px 0 0;
   object-fit: cover;
@@ -349,23 +408,28 @@ export default {
 
 @media (max-width: 768px) {
   .img-home {
-    height: 420px;
+    width: 90%;
+    height: 400px;
   }
 
   .img-home-2 {
-    height: 420px;
+    width: 90%;
+    height: 400px;
     // margin-left: 20%;
   }
 }
 
 @media (max-width: 576px) {
   .img-home {
-    height: 350px;
-    margin: 0 auto;
+    width: 80%;
+    height: 400px;
+    // margin: 0 auto;
+    text-align: center;
   }
 
   .img-home-2 {
-    height: 350px;
+    width: 80%;
+    height: 400px;
     margin: 0 auto;
     margin-top: 48px;
   }
@@ -520,8 +584,7 @@ export default {
 }
 
 // 新品上市
-.card-cus {
-}
+
 .cardimg-container {
   overflow: hidden;
   border-radius: 10px 10px 0 0;

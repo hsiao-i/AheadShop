@@ -47,8 +47,6 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}/v2/admin/signin`, this.user)
         .then((res) => {
-          console.log(res)
-
           const { token, expired } = res.data // token 和 expired 存在於 res.data 裡面
           document.cookie = `hexToken=${token}; expires=${new Date(expired)}` // 儲存 token
           this.$router.push('/admin/products')
@@ -56,9 +54,6 @@ export default {
         .catch((err) => {
           alert(err.response.data.message)
         })
-    },
-    test() {
-      console.log('click')
     }
   }
 }

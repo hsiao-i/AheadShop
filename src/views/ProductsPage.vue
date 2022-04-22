@@ -82,12 +82,12 @@
                   <div class="text-end">
                     <i
                       v-if="favorite.includes(products.id)"
-                      class="bi bi-heart-fill fs-5 text-danger"
+                      class="bi bi-heart-fill fs-5 text-danger pointer"
                       @click="toggleFavorite(products.id)"
                     ></i>
                     <i
                       v-else
-                      class="bi bi-heart fs-5"
+                      class="bi bi-heart fs-5 pointer"
                       @click="toggleFavorite(products.id)"
                     ></i>
                   </div>
@@ -105,7 +105,6 @@
           </div>
         </div>
 
-        <!-- <router-view></router-view> -->
         <span v-if="favorite.includes(products.id)"></span>
       </div>
     </div>
@@ -149,8 +148,6 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // console.log(res, this.pagination)
-          // console.log(this.products)
           this.products = res.data.products
           this.pagination = res.data.pagination
           this.isLoading = false
@@ -169,7 +166,6 @@ export default {
       const url = `${process.env.VUE_APP_API}/v2/api/${process.env.VUE_APP_PATH}/products?category=${category}&page=${page}`
 
       this.$http.get(url).then((res) => {
-        // console.log(this.products)
         this.products = res.data.products
         this.pagination = res.data.pagination
         this.isLoading = false
@@ -187,7 +183,6 @@ export default {
         .post(url, { data: data })
         .then((res) => {
           this.product = res.data
-          // console.log(res)
           emitter.emit('get-cart')
           this.$swal.fire({
             icon: 'success',
@@ -197,7 +192,6 @@ export default {
           })
         })
         .catch((err) => {
-          // console.log(err)
           this.$swal.fire({
             icon: 'warning',
             text: err.response.data.message,
@@ -221,8 +215,6 @@ export default {
       } else {
         this.favorite.splice(favoriteIndex, 1)
       }
-      // console.log(id)
-      // console.log(this.favorite)
     }
   },
   // 寫入 localstorage
@@ -290,7 +282,6 @@ export default {
 
 .router-link {
   display: block;
-  // width: 100%;
   height: 260px;
 }
 </style>

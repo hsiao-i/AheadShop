@@ -2,17 +2,10 @@
   <swiper
     :modules="modules"
     :thumbs="{ swiper: thumbsSwiper }"
-    :navigation="false"
-    :loop="fales"
     class="swiper-setting g-0"
   >
     <swiper-slide class="swiper-img">
       <img :src="swiperProduct.imageUrl" :alt="swiperProduct.title" class="" />
-      <!-- <div
-        class="col-md-5 product-img rounded-3"
-        :style="{ backgroundImage: `url(${swiperProduct.imageUrl})` }"
-      ></div
-    > -->
     </swiper-slide>
     <swiper-slide
       v-for="(imgs, index) in swiperProduct.imagesUrl"
@@ -83,11 +76,6 @@ export default {
   height: 350px;
   margin-bottom: 10px;
 }
-/* .swiper-img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-} */
 
 .swiper-img img {
   width: 100%;
@@ -96,11 +84,6 @@ export default {
   border-radius: 5px;
 }
 
-/* .swiper-setting2 {
-  width: 30%;
-  height: 100px;
-} */
-
 .swiper-img2 img {
   width: 100%;
   height: 100px;
@@ -108,12 +91,4 @@ export default {
   object-fit: cover;
   cursor: pointer;
 }
-
-/* .swiper-op {
-  opacity: 0.5;
-}
-
-.swiper-op {
-  opacity: 1;
-} */
 </style>

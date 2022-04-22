@@ -10,15 +10,22 @@
       <div class="mt-4">
         <h6 class="h6 text-danger mb-3">聯絡我們</h6>
         <ul class="list-unstyled">
-          <li class="d-flex">
+          <li class="d-flex mb-2">
             <i class="bi bi-telephone-fill text-secondary me-3"></i>
-            <p>02-2422-2222</p>
+            <a href="tel:+886-2-24222222" class="text-decoration-none text-main"
+              >02-2422-2222</a
+            >
           </li>
-          <!-- <li class="d-flex">
+          <li class="d-flex mb-2">
             <i class="bi bi-envelope-fill text-secondary me-3"></i>
-            <p>ahead.accessories@gmail.com</p>
-          </li> -->
-          <li class="d-flex">
+            <a
+              href="mailto:ahead@gmail.com"
+              class="text-decoration-none text-main word-break"
+              >ahead@gmail.com</a
+            >
+          </li>
+
+          <li class="d-flex mb-2">
             <i class="bi bi-clock-fill text-secondary me-3"></i>
             <p>Mon.-Fri. 09:00-18:00</p>
           </li>

@@ -69,7 +69,6 @@ export default {
 
   mounted() {
     this.modal = new Modal(this.$refs.delProductModal)
-    console.log(this.delproduct.id)
   }
 }
 </script>

@@ -2,9 +2,11 @@
   <LoadingOverlay :active="isLoading" :z-indes="1000"></LoadingOverlay>
   <!-- 進度條 -->
   <div>
-    <div class="d-flex justify-content-around w-50 mx-auto my-5">
+    <div
+      class="d-flex justify-content-around w-50 mx-auto my-5 position-relative"
+    >
       <div>
-        <div class="rounded-pill text-center order-shape-light mx-auto mb-1">
+        <div class="rounded-pill text-center order-shape mx-auto mb-1">
           <p class="pt-2">1</p>
         </div>
         <p class="text-center fs-7">填寫資料</p>
@@ -65,14 +67,14 @@
                           {{ orderCart.product.title }}
                         </h6>
 
-                        <p class="text-secondary text">
+                        <p class="text-secondary text-start qty-text">
                           數量：{{ orderCart.qty }}
                         </p>
                       </div>
                     </div>
                   </td>
 
-                  <td>
+                  <td class="text-start">
                     <p
                       v-if="
                         orderCart.product.price ===
@@ -226,12 +228,8 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // console.log(res)
           this.order = res.data.order
-
-          console.log(this.order)
           this.isLoading = false
-          console.log(this.$route.params)
         })
         .catch((err) => {
           this.$swal.fire({
@@ -250,7 +248,6 @@ export default {
       this.$http
         .post(url)
         .then((res) => {
-          // console.log(res)
           alert('付款完成！謝謝您的購買 ✿')
           this.$swal.fire({
             icon: 'success',
@@ -319,9 +316,9 @@ export default {
   border-bottom: 2px solid #e9e8e8;
 }
 
-@media (max-width: 768 px) {
-  .text {
-    text-align: left;
+@media (max-width: 576px) {
+  .qty-text {
+    text-align: center !important;
   }
 }
 </style>
